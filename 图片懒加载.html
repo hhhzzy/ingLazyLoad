@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<style>
+                img{width: 100%;min-height: 200px;}
+</style>
+<body>
+    <div id="div1">
+           <ul id="imgUL">
+                <li>
+                             <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+                <li>
+                             <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+                <li>
+                             <img src="default.jpg" data-src="http://ww1.sinaimg.cn/large/006y8mN6gw1fa7kaed2hpj30sg0l9q54.jpg" alt="">
+                </li>
+                <li>
+                             <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+                <li>
+                              <img src="default.jpg" data-src="http://ww1.sinaimg.cn/large/006y8mN6gw1fa7kaed2hpj30sg0l9q54.jpg" alt="">
+                </li>
+                <li>
+                             <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+                <li>
+                             <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+                <li>
+                              <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+                <li>
+                             <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+                <li>
+                            <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+                <li>
+                              <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+                <li>
+                             <img src="default.jpg" data-src="http://ww1.sinaimg.cn/large/006y8mN6gw1fa7kaed2hpj30sg0l9q54.jpg" alt="">
+                </li>
+                <li>
+                            <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+                <li>
+                              <img src="default.jpg" data-src="http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+</body>
+</html>
+<script>
+             /*
+              *
+              *   offsetTop、offsetLeft：元素的偏移（如果距离最近的父元素不是不为static定位的话，就是相对于父元素的便宜，如果是static定位的话就相对于body）
+              *   offsetWidth 、offsetHeight ：网页可见区域宽高（包括边框）
+              *   clientHeight、clientWidth：网页的可见区域宽高（不包括边框）
+              *   scrollHeight、scrollWidth：网页全文的宽高
+              *   scrollTop、scrollLeft：滚轮的高度（网页被卷去的高度）
+              *
+              * 
+              */
+                 window.onload = function(){
+                       lazyload();
+                 }
+                //鼠标滚动
+                window.onscroll = function() {
+                       lazyload();
+                }
+                function lazyload(){
+                          var oUL = document.getElementById("imgUL");
+                          var oLI = oUL.getElementsByTagName("li");
+                          var oLILength = oLI.length;
+                          //定义
+                          var clientHeight = document.documentElement.clientHeight;//网页可见区域的高度
+                          var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //获取滚轮的高度(网页被卷去的高度)
+                          //判断滚轮是否滚动到了该加载的位置了
+                          for(var i=0;i<oLILength;i++){
+                                if(oLI[i].offsetTop < clientHeight + scrollTop +10 ){  //如果待加载的元素距离顶部的高度 <  滚轮的高度+可见区域的高度，就表名要加载图片了
+                                                oLI[i].getElementsByTagName("img")[0].src = oLI[i].getElementsByTagName("img")[0].getAttribute("data-src");
+                                }
+                          } 
+                }
+                
+</script>
